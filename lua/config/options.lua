@@ -36,40 +36,47 @@ o.shortmess:append("sIc")
 
 -- Presse-papier système (chargé après le démarrage pour ne pas le ralentir).
 vim.schedule(function()
-  if platform.is_wsl and not platform.has("win32yank.exe") then
-    local paste = 'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))'
-    vim.g.clipboard = {
-      name = "WSL",
-      copy = { ["+"] = "clip.exe", ["*"] = "clip.exe" },
-      paste = { ["+"] = paste, ["*"] = paste },
-      cache_enabled = 0,
-    }
-  end
-  o.clipboard = "unnamedplus"
+	if platform.is_wsl and not platform.has("win32yank.exe") then
+		local paste =
+			'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))'
+		vim.g.clipboard = {
+			name = "WSL",
+			copy = { ["+"] = "clip.exe", ["*"] = "clip.exe" },
+			paste = { ["+"] = paste, ["*"] = paste },
+			cache_enabled = 0,
+		}
+	end
+	o.clipboard = "unnamedplus"
 end)
 
 -- Windows : PowerShell comme shell (`:!`, terminal flottant…).
 if platform.is_windows then
-  vim.o.shell = platform.has("pwsh") and "pwsh" or "powershell"
-  vim.o.shellcmdflag =
-    "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;"
-  vim.o.shellredir = '2>&1 | %%{ "$_" } | Out-File %s; exit $LastExitCode'
-  vim.o.shellpipe = '2>&1 | %%{ "$_" } | Tee-Object %s; exit $LastExitCode'
-  vim.o.shellquote = ""
-  vim.o.shellxquote = ""
+	vim.o.shell = platform.has("pwsh") and "pwsh" or "powershell"
+	vim.o.shellcmdflag =
+		"-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;"
+	vim.o.shellredir = '2>&1 | %%{ "$_" } | Out-File %s; exit $LastExitCode'
+	vim.o.shellpipe = '2>&1 | %%{ "$_" } | Tee-Object %s; exit $LastExitCode'
+	vim.o.shellquote = ""
+	vim.o.shellxquote = ""
 end
 
 -- Diagnostics : flottants arrondis, texte virtuel discret.
 vim.diagnostic.config({
-  virtual_text = { spacing = 2, prefix = "●" },
-  severity_sort = true,
-  float = { border = "rounded", source = true },
-  signs = {
-    text = {
-      [vim.diagnostic.severity.ERROR] = "",
-      [vim.diagnostic.severity.WARN] = "",
-      [vim.diagnostic.severity.INFO] = "",
-      [vim.diagnostic.severity.HINT] = "",
-    },
-  },
+	virtual_text = { spacing = 2, prefix = "●" },
+	severity_sort = true,
+	float = { border = "rounded", source = true },
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = "",
+			[vim.diagnostic.severity.WARN] = "",
+			[vim.diagnostic.severity.INFO] = "",
+			[vim.diagnostic.severity.HINT] = "",
+		},
+	},
 })
+
+-- Fournisseurs inutilisés par cette config.
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_node_provider = 0
+vim.g.loaded_python3_provider = 0
