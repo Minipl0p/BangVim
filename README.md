@@ -39,14 +39,14 @@ Tout ce qui est réglable passe par une fenêtre de paramètres et par des **pro
 
 ## Aperçu
 
-| | |
-| --- | --- |
-| ![Arbre flottant](docs/screenshots/arbre.png) | ![Recherche](docs/screenshots/recherche.png) |
-| Arbre de fichiers flottant, `h`/`l` pour replier/déplier | Recherche de fichiers et live grep flottants, avec aperçu |
-| ![Paramètres](docs/screenshots/parametres.png) | ![Claude Code](docs/screenshots/claude.png) |
-| `:Param` : profils, thème, formatage, commits, raccourcis | Claude Code en split à droite, le code reste visible |
-| ![Markdown](docs/screenshots/markdown.png) | ![Debug](docs/screenshots/debug.png) |
-| Aperçu Markdown navigateur avec Mermaid, en écran partagé | Débogueur en panneaux ou en flottant |
+|                                                           |                                                           |
+| --------------------------------------------------------- | --------------------------------------------------------- |
+| ![Arbre flottant](docs/screenshots/arbre.png)             | ![Recherche](docs/screenshots/recherche.png)              |
+| Arbre de fichiers flottant, `h`/`l` pour replier/déplier  | Recherche de fichiers et live grep flottants, avec aperçu |
+| ![Paramètres](docs/screenshots/parametres.png)            | ![Claude Code](docs/screenshots/claude.png)               |
+| olajwhd                                                   | `:Param` : profils, thème, formatage, commits, raccourcis | Claude Code en split à droite, le code reste visible |
+| ![Markdown](docs/screenshots/markdown.png)                | ![Debug](docs/screenshots/debug.png)                      |
+| Aperçu Markdown navigateur avec Mermaid, en écran partagé | Débogueur en panneaux ou en flottant                      |
 
 **Ce qu'il y a dedans**
 
@@ -68,20 +68,20 @@ Les raccourcis affichés par which-key sont uniquement ceux de cette config, jam
 
 ### Ce qui est installé
 
-| Logiciel | Rôle | Linux / WSL | Windows |
-| --- | --- | --- | --- |
-| Neovim ≥ 0.12 | L'éditeur | tarball officiel | winget |
-| WezTerm | Terminal (dégradé, protocole clavier) | paquet | winget |
-| Git | Plugins, git | paquet | winget |
-| ripgrep, fd | Recherche de texte et de fichiers | paquet | winget |
-| lazygit | Interface git | paquet / release | winget |
-| Node.js | Plusieurs serveurs LSP (web, Bash…) | paquet | winget |
-| Python 3 | debugpy, gdtoolkit, jdtls | paquet | winget |
-| Compilateur C | Parseurs Treesitter | gcc | Visual Studio C++ / Build Tools |
-| JetBrainsMono Nerd Font | Police avec icônes | téléchargée | winget |
-| Claude Code | Split Claude, commits IA | script officiel | script officiel |
-| zsh + Oh My Zsh | Shell et thème | paquet + script | — |
-| PowerShell 7 | Shell Windows | — | winget |
+| Logiciel                | Rôle                                  | Linux / WSL      | Windows                         |
+| ----------------------- | ------------------------------------- | ---------------- | ------------------------------- |
+| Neovim ≥ 0.12           | L'éditeur                             | tarball officiel | winget                          |
+| WezTerm                 | Terminal (dégradé, protocole clavier) | paquet           | winget                          |
+| Git                     | Plugins, git                          | paquet           | winget                          |
+| ripgrep, fd             | Recherche de texte et de fichiers     | paquet           | winget                          |
+| lazygit                 | Interface git                         | paquet / release | winget                          |
+| Node.js                 | Plusieurs serveurs LSP (web, Bash…)   | paquet           | winget                          |
+| Python 3                | debugpy, gdtoolkit, jdtls             | paquet           | winget                          |
+| Compilateur C           | Parseurs Treesitter                   | gcc              | Visual Studio C++ / Build Tools |
+| JetBrainsMono Nerd Font | Police avec icônes                    | téléchargée      | winget                          |
+| Claude Code             | Split Claude, commits IA              | script officiel  | script officiel                 |
+| zsh + Oh My Zsh         | Shell et thème                        | paquet + script  | —                               |
+| PowerShell 7            | Shell Windows                         | —                | winget                          |
 
 **Selon tes langages** (installés à part) : SDK .NET 8+ pour C# et Unity, JDK 21 pour Java, Go, Rust (`rustup`).
 
@@ -112,9 +112,9 @@ cd $HOME\nvim-config
 powershell -ExecutionPolicy Bypass -File install\windows.ps1 -Langages
 ```
 
-| Option | Effet |
-| --- | --- |
-| `-Langages` | Installe aussi .NET 8, JDK 21, Go et Rust |
+| Option        | Effet                                                                                                                                  |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `-Langages`   | Installe aussi .NET 8, JDK 21, Go et Rust                                                                                              |
 | `-BuildTools` | Installe les Build Tools C++ de Visual Studio (inutile si Visual Studio avec le module C++ est déjà là, ce qui est le cas pour Unreal) |
 
 Le script crée une jonction `%LOCALAPPDATA%\nvim` → ce repo, et copie la config WezTerm dans `%USERPROFILE%\.wezterm.lua`.
@@ -125,7 +125,7 @@ Le prompt PowerShell est un projet séparé (repo `powershell-prompt`).
 
 1. Ouvre WezTerm, puis `nvim`.
 2. Patiente quelques minutes : plugins, serveurs LSP, formateurs, débogueurs et parseurs s'installent. `:Mason` montre la progression.
-3. Active le plan gratuit de Copilot sur GitHub (*Settings → Copilot → Copilot Free*), puis lance `:Copilot auth` et saisis le code affiché sur la page indiquée.
+3. Active le plan gratuit de Copilot sur GitHub (_Settings → Copilot → Copilot Free_), puis lance `:Copilot auth` et saisis le code affiché sur la page indiquée.
 4. Vérifie l'état avec `:checkhealth`.
 
 ![Premier lancement](docs/screenshots/premier-lancement.png) <!-- capture : Mason qui installe -->
@@ -152,14 +152,14 @@ Relance la commande quand tu ajoutes des modules ou des fichiers. La première i
 ### Unity
 
 1. Installe le SDK .NET 8 ou plus.
-2. Dans Unity : *Edit → Preferences → External Tools*, choisis l'éditeur externe et clique **Regenerate project files** pour créer les `.csproj` et la `.sln`.
+2. Dans Unity : _Edit → Preferences → External Tools_, choisis l'éditeur externe et clique **Regenerate project files** pour créer les `.csproj` et la `.sln`.
 3. Ouvre le dossier du projet dans Neovim : le serveur Roslyn démarre sur les fichiers `.cs` (`:Roslyn target` pour choisir la solution s'il y en a plusieurs).
 
 ### Godot
 
 Godot embarque son propre serveur LSP (port 6005). **L'éditeur Godot doit être ouvert** pour que la complétion GDScript fonctionne.
 
-Pour que Godot ouvre les scripts dans Neovim : *Éditeur → Paramètres de l'éditeur → Text Editor → External*
+Pour que Godot ouvre les scripts dans Neovim : _Éditeur → Paramètres de l'éditeur → Text Editor → External_
 
 - **Use External Editor** : activé
 - **Exec Path** : chemin de `nvim`
@@ -179,97 +179,97 @@ La touche **leader** est `Espace`. Tous les raccourcis se modifient par profil d
 
 **Bases**
 
-| Touche | Action |
-| --- | --- |
-| `<C-s>` | Sauvegarder |
-| `<C-q>` | Fermer le buffer (avec sauvegarde). Dernier buffer : quitte tout |
-| `<C-S-q>` | Fermer le buffer sans sauvegarder |
-| `jk` | Sortir du mode insertion |
-| `<Esc>` | Effacer le surlignage de recherche |
-| `<C-/>` | Commenter la ligne ou la sélection |
-| `J` | Joindre les lignes sans bouger le curseur |
-| `<` `>` (visuel) | Indenter en gardant la sélection |
-| `<C-j>` / `<C-k>` | Descendre / monter de 5 lignes |
+| Touche            | Action                                                           |
+| ----------------- | ---------------------------------------------------------------- |
+| `<C-s>`           | Sauvegarder                                                      |
+| `<C-q>`           | Fermer le buffer (avec sauvegarde). Dernier buffer : quitte tout |
+| `<C-S-q>`         | Fermer le buffer sans sauvegarder                                |
+| `jk`              | Sortir du mode insertion                                         |
+| `<Esc>`           | Effacer le surlignage de recherche                               |
+| `<C-/>`           | Commenter la ligne ou la sélection                               |
+| `J`               | Joindre les lignes sans bouger le curseur                        |
+| `<` `>` (visuel)  | Indenter en gardant la sélection                                 |
+| `<C-j>` / `<C-k>` | Descendre / monter de 5 lignes                                   |
 
 **Buffers et fenêtres**
 
-| Touche | Action |
-| --- | --- |
-| `<C-h>` / `<C-l>` | Buffer précédent / suivant (Claude et terminaux exclus) |
-| ``<C-`>`` | Fermer tous les autres buffers |
-| `<leader><Espace>` | Liste des buffers ouverts |
-| `<C-;>` | Rotation entre les splits ; depuis Claude, retour au code |
-| `<leader>v` / `<leader>h` | Split vertical / horizontal |
-| `<leader>w` | Fermer le split |
-| `<leader>=` | Égaliser les splits |
-| `<C-flèches>` | Redimensionner (ou à la souris sur les bordures) |
-| `<C-t>` | Ouvrir / cacher le terminal flottant |
-| `<Esc><Esc>` | Mode normal dans le terminal flottant |
+| Touche                    | Action                                                    |
+| ------------------------- | --------------------------------------------------------- |
+| `<C-h>` / `<C-l>`         | Buffer précédent / suivant (Claude et terminaux exclus)   |
+| ``<C-`>``                 | Fermer tous les autres buffers                            |
+| `<leader><Espace>`        | Liste des buffers ouverts                                 |
+| `<C-;>`                   | Rotation entre les splits ; depuis Claude, retour au code |
+| `<leader>v` / `<leader>h` | Split vertical / horizontal                               |
+| `<leader>w`               | Fermer le split                                           |
+| `<leader>=`               | Égaliser les splits                                       |
+| `<C-flèches>`             | Redimensionner (ou à la souris sur les bordures)          |
+| `<C-t>`                   | Ouvrir / cacher le terminal flottant                      |
+| `<Esc><Esc>`              | Mode normal dans le terminal flottant                     |
 
 **Recherche et fichiers**
 
-| Touche | Action |
-| --- | --- |
-| `<leader>f` | Chercher un fichier |
-| `<leader>g` | Live grep |
-| `s` | Saut rapide (flash) |
-| `S` | Sélectionner un bloc de code (Treesitter) |
-| `<leader>e` | Arbre de fichiers flottant |
-| `l` / `h` (arbre) | Déplier / replier (ou remonter au parent) |
-| `<CR>` (arbre) | Ouvrir le fichier |
-| `<C-CR>` (arbre) | Ouvrir le fichier et fermer tous les autres buffers |
-| `a` `d` `r` `m` (arbre) | Créer, supprimer, renommer, déplacer |
+| Touche                  | Action                                              |
+| ----------------------- | --------------------------------------------------- |
+| `<leader>f`             | Chercher un fichier                                 |
+| `<leader>g`             | Live grep                                           |
+| `s`                     | Saut rapide (flash)                                 |
+| `S`                     | Sélectionner un bloc de code (Treesitter)           |
+| `<leader>e`             | Arbre de fichiers flottant                          |
+| `l` / `h` (arbre)       | Déplier / replier (ou remonter au parent)           |
+| `<CR>` (arbre)          | Ouvrir le fichier                                   |
+| `<C-CR>` (arbre)        | Ouvrir le fichier et fermer tous les autres buffers |
+| `a` `d` `r` `m` (arbre) | Créer, supprimer, renommer, déplacer                |
 
 **Copier-coller**
 
-| Touche | Action |
-| --- | --- |
-| `y` | Copier (dans l'historique) |
-| `p` / `P` | Coller après / avant, avec indentation automatique |
+| Touche            | Action                                                                |
+| ----------------- | --------------------------------------------------------------------- |
+| `y`               | Copier (dans l'historique)                                            |
+| `p` / `P`         | Coller après / avant, avec indentation automatique                    |
 | `<C-p>` / `<C-n>` | Juste après un collage : remplacer par la copie précédente / suivante |
-| `<leader>y` | Historique des copies : choisir quoi coller |
+| `<leader>y`       | Historique des copies : choisir quoi coller                           |
 
 **Code**
 
-| Touche | Action |
-| --- | --- |
-| `gd` / `gD` | Définition / déclaration |
-| `gi` / `gy` | Implémentation / type |
-| `gr` | Références |
-| `K` | Documentation au survol |
-| `gl` | Diagnostic complet de la ligne |
-| `[d` / `]d` | Diagnostic précédent / suivant |
-| `<leader>b` | Renommer partout (LSP) |
+| Touche      | Action                                                                    |
+| ----------- | ------------------------------------------------------------------------- |
+| `gd` / `gD` | Définition / déclaration                                                  |
+| `gi` / `gy` | Implémentation / type                                                     |
+| `gr`        | Références                                                                |
+| `K`         | Documentation au survol                                                   |
+| `gl`        | Diagnostic complet de la ligne                                            |
+| `[d` / `]d` | Diagnostic précédent / suivant                                            |
+| `<leader>b` | Renommer partout (LSP)                                                    |
 | `<leader>n` | Renommer dans le fichier (texte). En visuel : remplacer dans la sélection |
 
 **Complétion et IA** (mode insertion)
 
-| Touche | Action |
-| --- | --- |
-| `Tab` | Accepter toute la suggestion IA (sinon : indentation ou placeholder suivant) |
-| `<C-l>` / `<C-j>` | Accepter un mot / une ligne de la suggestion IA |
-| `<C-]>` | Variante suivante de la suggestion |
-| `<C-e>` | Rejeter la suggestion / fermer le menu |
-| `<C-n>` / `<C-p>` | Naviguer dans le menu de complétion |
-| `<CR>` | Valider l'élément du menu |
-| `<C-Space>` | Forcer l'ouverture du menu |
-| `<S-Tab>` | Placeholder précédent d'un snippet |
+| Touche            | Action                                                                       |
+| ----------------- | ---------------------------------------------------------------------------- |
+| `Tab`             | Accepter toute la suggestion IA (sinon : indentation ou placeholder suivant) |
+| `<C-l>` / `<C-j>` | Accepter un mot / une ligne de la suggestion IA                              |
+| `<C-]>`           | Variante suivante de la suggestion                                           |
+| `<C-e>`           | Rejeter la suggestion / fermer le menu                                       |
+| `<C-n>` / `<C-p>` | Naviguer dans le menu de complétion                                          |
+| `<CR>`            | Valider l'élément du menu                                                    |
+| `<C-Space>`       | Forcer l'ouverture du menu                                                   |
+| `<S-Tab>`         | Placeholder précédent d'un snippet                                           |
 
 **Claude Code, Git, Markdown, Debug, Paramètres**
 
-| Touche | Action |
-| --- | --- |
-| `<leader>a` | Ouvrir / cacher Claude Code |
-| `<C-j>` / `<C-k>` (dans Claude) | Défiler dans les réponses |
-| `<leader>Q` | Tout quitter (Neovim et Claude) |
-| `<C-g>` | Lazygit |
-| `<C-a>` (dans lazygit) | Commit avec message généré par IA |
-| `<leader>m` | Aperçu Markdown dans le navigateur (on/off) |
-| `F5` / `<S-F5>` | Lancer ou continuer / arrêter le débogage |
-| `F9` / `<leader>B` | Breakpoint / breakpoint conditionnel |
-| `F10` / `F11` / `<S-F11>` | Passer / entrer / sortir |
-| `<leader>D` | Interface du débogueur |
-| `<leader>,` ou `:Param` | Paramètres et profils |
+| Touche                          | Action                                      |
+| ------------------------------- | ------------------------------------------- |
+| `<leader>a`                     | Ouvrir / cacher Claude Code                 |
+| `<C-j>` / `<C-k>` (dans Claude) | Défiler dans les réponses                   |
+| `<leader>Q`                     | Tout quitter (Neovim et Claude)             |
+| `<C-g>`                         | Lazygit                                     |
+| `<C-a>` (dans lazygit)          | Commit avec message généré par IA           |
+| `<leader>m`                     | Aperçu Markdown dans le navigateur (on/off) |
+| `F5` / `<S-F5>`                 | Lancer ou continuer / arrêter le débogage   |
+| `F9` / `<leader>B`              | Breakpoint / breakpoint conditionnel        |
+| `F10` / `F11` / `<S-F11>`       | Passer / entrer / sortir                    |
+| `<leader>D`                     | Interface du débogueur                      |
+| `<leader>,` ou `:Param`         | Paramètres et profils                       |
 
 ### Paramètres et profils
 
@@ -277,16 +277,16 @@ La touche **leader** est `Espace`. Tous les raccourcis se modifient par profil d
 
 `<leader>,` (ou `:Param`, ou `:param`) ouvre la fenêtre des paramètres. `Entrée` modifie la ligne, `r` remet un raccourci par défaut, `q` ferme.
 
-| Section | Réglages |
-| --- | --- |
-| Profil | Profil actif, associer le dossier courant, créer, dupliquer, renommer, supprimer |
-| Apparence | Thème (aperçu en direct), traînée du curseur, animation BOUM |
-| Formatage | Formatage à la sauvegarde, formateur par langage |
-| Commits | Norme, modifier ou créer une norme, seuils de rappel |
-| Complétion IA | Suggestions en texte grisé on/off |
-| Débogueur | Interface en panneaux ou flottante |
-| Markdown | Navigateur de l'aperçu |
-| Raccourcis | Tous les raccourcis, modifiables (un `●` marque ceux personnalisés) |
+| Section       | Réglages                                                                         |
+| ------------- | -------------------------------------------------------------------------------- |
+| Profil        | Profil actif, associer le dossier courant, créer, dupliquer, renommer, supprimer |
+| Apparence     | Thème (aperçu en direct), traînée du curseur, animation BOUM                     |
+| Formatage     | Formatage à la sauvegarde, formateur par langage                                 |
+| Commits       | Norme, modifier ou créer une norme, seuils de rappel                             |
+| Complétion IA | Suggestions en texte grisé on/off                                                |
+| Débogueur     | Interface en panneaux ou flottante                                               |
+| Markdown      | Navigateur de l'aperçu                                                           |
+| Raccourcis    | Tous les raccourcis, modifiables (un `●` marque ceux personnalisés)              |
 
 **Quel profil est utilisé ?**
 
@@ -458,10 +458,10 @@ L'action apparaît automatiquement dans `:Param` et dans which-key.
 
 Les profils sont enregistrés dans `profils.json`, dans le dossier de données de Neovim :
 
-| Système | Emplacement |
-| --- | --- |
-| Linux / WSL | `~/.local/share/nvim/profils.json` |
-| Windows | `%LOCALAPPDATA%\nvim-data\profils.json` |
+| Système     | Emplacement                             |
+| ----------- | --------------------------------------- |
+| Linux / WSL | `~/.local/share/nvim/profils.json`      |
+| Windows     | `%LOCALAPPDATA%\nvim-data\profils.json` |
 
 Ce fichier n'est jamais dans le repo : tes réglages d'entreprise restent sur ta machine. Pour retrouver tes profils sur un autre PC, copie ce fichier. Les valeurs possibles et par défaut sont dans `M.defaults` de `lua/core/profiles.lua`.
 
@@ -469,31 +469,31 @@ Ce fichier n'est jamais dans le repo : tes réglages d'entreprise restent sur ta
 
 ## Dépannage
 
-| Problème | Solution |
-| --- | --- |
-| Icônes en carrés | La police Nerd Font n'est pas installée, ou WezTerm n'utilise pas la bonne (`wezterm/wezterm.lua`). |
-| `<C-;>`, `<C-/>` ou `<C-S-q>` ne répondent pas | Utilise WezTerm avec la config fournie : ces touches demandent le protocole clavier kitty. |
-| Pas de coloration | `:checkhealth nvim-treesitter`. Il faut `tree-sitter-cli` (installé par Mason) et un compilateur C (gcc, ou Visual Studio C++ sous Windows). |
-| Pas de complétion ni de `gd` | `:checkhealth vim.lsp` et `:Mason` pour voir si le serveur est installé. Unreal : `compile_commands.json` manquant. Godot : l'éditeur Godot doit être ouvert. |
-| Pas de suggestions IA | `:Copilot auth`, `:Copilot status`, et vérifie que l'IA est activée dans `:Param`. |
-| Commit IA : « claude introuvable » | Installe Claude Code et connecte-toi une fois en lançant `claude` dans un terminal. |
-| Le défilement de Claude au clavier ne marche pas | Utilise la souris en attendant et signale-le : le comportement dépend de la version de Claude Code. |
-| L'aperçu Markdown ne marche pas | Ouvre le fichier `.md` et lance `:MarkdownDiag` : chaque étape est testée et le rapport indique laquelle échoue. |
-| L'aperçu Markdown ne s'ouvre pas en écran partagé | Fonctionne avec Chrome, Edge, Brave et Chromium. Sous Linux, demande X11 (Wayland ignore la position des fenêtres). |
-| Repartir de zéro | Supprime les dossiers de données et de cache de Neovim (`~/.local/share/nvim`, `~/.cache/nvim` ; sous Windows `%LOCALAPPDATA%\nvim-data`). |
+| Problème                                          | Solution                                                                                                                                                      |
+| ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Icônes en carrés                                  | La police Nerd Font n'est pas installée, ou WezTerm n'utilise pas la bonne (`wezterm/wezterm.lua`).                                                           |
+| `<C-;>`, `<C-/>` ou `<C-S-q>` ne répondent pas    | Utilise WezTerm avec la config fournie : ces touches demandent le protocole clavier kitty.                                                                    |
+| Pas de coloration                                 | `:checkhealth nvim-treesitter`. Il faut `tree-sitter-cli` (installé par Mason) et un compilateur C (gcc, ou Visual Studio C++ sous Windows).                  |
+| Pas de complétion ni de `gd`                      | `:checkhealth vim.lsp` et `:Mason` pour voir si le serveur est installé. Unreal : `compile_commands.json` manquant. Godot : l'éditeur Godot doit être ouvert. |
+| Pas de suggestions IA                             | `:Copilot auth`, `:Copilot status`, et vérifie que l'IA est activée dans `:Param`.                                                                            |
+| Commit IA : « claude introuvable »                | Installe Claude Code et connecte-toi une fois en lançant `claude` dans un terminal.                                                                           |
+| Le défilement de Claude au clavier ne marche pas  | Utilise la souris en attendant et signale-le : le comportement dépend de la version de Claude Code.                                                           |
+| L'aperçu Markdown ne marche pas                   | Ouvre le fichier `.md` et lance `:MarkdownDiag` : chaque étape est testée et le rapport indique laquelle échoue.                                              |
+| L'aperçu Markdown ne s'ouvre pas en écran partagé | Fonctionne avec Chrome, Edge, Brave et Chromium. Sous Linux, demande X11 (Wayland ignore la position des fenêtres).                                           |
+| Repartir de zéro                                  | Supprime les dossiers de données et de cache de Neovim (`~/.local/share/nvim`, `~/.cache/nvim` ; sous Windows `%LOCALAPPDATA%\nvim-data`).                    |
 
 ---
 
 ## Plugins
 
-| Domaine | Plugins |
-| --- | --- |
-| Gestion | [lazy.nvim](https://github.com/folke/lazy.nvim) |
-| Interface | [bufferline](https://github.com/akinsho/bufferline.nvim), [lualine](https://github.com/nvim-lualine/lualine.nvim), [noice](https://github.com/folke/noice.nvim), [which-key](https://github.com/folke/which-key.nvim), [colorful-winsep](https://github.com/nvim-zh/colorful-winsep.nvim), [smear-cursor](https://github.com/sphamba/smear-cursor.nvim) |
-| Outils | [snacks.nvim](https://github.com/folke/snacks.nvim) (picker, terminal, lazygit, notifications), [neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim), [flash](https://github.com/folke/flash.nvim), [yanky](https://github.com/gbprod/yanky.nvim) |
-| Code | [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter), [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig), [mason](https://github.com/mason-org/mason.nvim), [mason-tool-installer](https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim), [roslyn.nvim](https://github.com/seblyng/roslyn.nvim), [nvim-jdtls](https://github.com/mfussenegger/nvim-jdtls), [conform](https://github.com/stevearc/conform.nvim) |
-| Complétion | [blink.cmp](https://github.com/saghen/blink.cmp), [friendly-snippets](https://github.com/rafamadriz/friendly-snippets), [copilot.lua](https://github.com/zbirenbaum/copilot.lua) |
-| Debug | [nvim-dap](https://github.com/mfussenegger/nvim-dap), [nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui), [mason-nvim-dap](https://github.com/jay-babu/mason-nvim-dap.nvim), [nvim-dap-virtual-text](https://github.com/theHamsta/nvim-dap-virtual-text) |
-| IA | [claudecode.nvim](https://github.com/coder/claudecode.nvim) |
-| Markdown | [render-markdown](https://github.com/MeanderingProgrammer/render-markdown.nvim), [live-preview](https://github.com/brianhuster/live-preview.nvim) |
-| Thèmes | Catppuccin, Tokyo Night, Kanagawa, Rosé Pine, Nightfox, OneDark, Cyberdream, Dracula, Nord, GitHub, Gruvbox Material, Everforest, Sonokai, Oxocarbon |
+| Domaine    | Plugins                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Gestion    | [lazy.nvim](https://github.com/folke/lazy.nvim)                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Interface  | [bufferline](https://github.com/akinsho/bufferline.nvim), [lualine](https://github.com/nvim-lualine/lualine.nvim), [noice](https://github.com/folke/noice.nvim), [which-key](https://github.com/folke/which-key.nvim), [colorful-winsep](https://github.com/nvim-zh/colorful-winsep.nvim), [smear-cursor](https://github.com/sphamba/smear-cursor.nvim)                                                                                         |
+| Outils     | [snacks.nvim](https://github.com/folke/snacks.nvim) (picker, terminal, lazygit, notifications), [neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim), [flash](https://github.com/folke/flash.nvim), [yanky](https://github.com/gbprod/yanky.nvim)                                                                                                                                                                                         |
+| Code       | [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter), [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig), [mason](https://github.com/mason-org/mason.nvim), [mason-tool-installer](https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim), [roslyn.nvim](https://github.com/seblyng/roslyn.nvim), [nvim-jdtls](https://github.com/mfussenegger/nvim-jdtls), [conform](https://github.com/stevearc/conform.nvim) |
+| Complétion | [blink.cmp](https://github.com/saghen/blink.cmp), [friendly-snippets](https://github.com/rafamadriz/friendly-snippets), [copilot.lua](https://github.com/zbirenbaum/copilot.lua)                                                                                                                                                                                                                                                                |
+| Debug      | [nvim-dap](https://github.com/mfussenegger/nvim-dap), [nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui), [mason-nvim-dap](https://github.com/jay-babu/mason-nvim-dap.nvim), [nvim-dap-virtual-text](https://github.com/theHamsta/nvim-dap-virtual-text)                                                                                                                                                                                    |
+| IA         | [claudecode.nvim](https://github.com/coder/claudecode.nvim)                                                                                                                                                                                                                                                                                                                                                                                     |
+| Markdown   | [render-markdown](https://github.com/MeanderingProgrammer/render-markdown.nvim), [live-preview](https://github.com/brianhuster/live-preview.nvim)                                                                                                                                                                                                                                                                                               |
+| Thèmes     | Catppuccin, Tokyo Night, Kanagawa, Rosé Pine, Nightfox, OneDark, Cyberdream, Dracula, Nord, GitHub, Gruvbox Material, Everforest, Sonokai, Oxocarbon                                                                                                                                                                                                                                                                                            |
