@@ -90,7 +90,7 @@ Tout le reste (serveurs LSP, formateurs, débogueurs, `tree-sitter-cli`) est ins
 ### Linux et WSL
 
 ```bash
-git clone https://github.com/Minipl0p/BangVim.git ~/nvim-config
+git clone <url-de-ce-repo> ~/nvim-config
 cd ~/nvim-config
 ./install/linux.sh
 ```
