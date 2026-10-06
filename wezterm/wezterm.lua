@@ -75,4 +75,14 @@ wezterm.on("user-var-changed", function(window, _, name, value)
 	end
 end)
 
+-- ── Souris ───────────────────────────────────────────────────
+-- Alt + clic gauche maintenu : déplacer la fenêtre (il n'y a pas de barre de titre).
+config.mouse_bindings = {
+	{
+		event = { Drag = { streak = 1, button = "Left" } },
+		mods = "ALT",
+		action = wezterm.action.StartWindowDrag,
+	},
+}
+
 return config
