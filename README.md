@@ -44,7 +44,7 @@ Tout ce qui est réglable passe par une fenêtre de paramètres et par des **pro
 | ![Arbre flottant](docs/screenshots/arbre.png)             | ![Recherche](docs/screenshots/recherche.png)              |
 | Arbre de fichiers flottant, `h`/`l` pour replier/déplier  | Recherche de fichiers et live grep flottants, avec aperçu |
 | ![Paramètres](docs/screenshots/parametres.png)            | ![Claude Code](docs/screenshots/claude.png)               |
-| olajwhd                                                   | `:Param` : profils, thème, formatage, commits, raccourcis | Claude Code en split à droite, le code reste visible |
+| `:Param` : profils, thème, formatage, commits, raccourcis | Claude Code en split à droite, le code reste visible      |
 | ![Markdown](docs/screenshots/markdown.png)                | ![Debug](docs/screenshots/debug.png)                      |
 | Aperçu Markdown navigateur avec Mermaid, en écran partagé | Débogueur en panneaux ou en flottant                      |
 
