@@ -35,7 +35,9 @@ function M.cycle()
   local cur = vim.api.nvim_get_current_win()
   local cbuf = M.buf()
   if cbuf and vim.api.nvim_win_get_buf(cur) == cbuf then
-    if last_code_win and vim.api.nvim_win_is_valid(last_code_win) then
+    -- La fenêtre mémorisée doit toujours contenir du code (à l'ouverture du split,
+    -- la fenêtre de Claude contient un instant un buffer vide « normal »).
+    if last_code_win and last_code_win ~= cur and buffers.is_code_win(last_code_win) then
       vim.api.nvim_set_current_win(last_code_win)
     else
       buffers.ensure_code_win()

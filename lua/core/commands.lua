@@ -30,3 +30,7 @@ end, { desc = "Aperçu Markdown dans le navigateur" })
 cmd("MarkdownStop", function()
   require("core.markdown").stop()
 end, { desc = "Arrêter l'aperçu Markdown" })
+
+cmd("MarkdownDiag", function()
+  require("core.markdown").diag()
+end, { desc = "Diagnostic de l'aperçu Markdown" })

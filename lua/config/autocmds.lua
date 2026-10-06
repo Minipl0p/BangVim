@@ -41,6 +41,13 @@ au("VimEnter", {
     local dir
     if #argv == 0 then
       dir = vim.uv.cwd()
+      -- Le buffer vide « [No Name] » du démarrage : invisible dans la barre des
+      -- buffers, et supprimé dès qu'un fichier prend sa place.
+      local buf = vim.api.nvim_get_current_buf()
+      if vim.api.nvim_buf_get_name(buf) == "" and not vim.bo[buf].modified then
+        vim.bo[buf].buflisted = false
+        vim.bo[buf].bufhidden = "wipe"
+      end
     elseif #argv == 1 and vim.fn.isdirectory(argv[1]) == 1 then
       dir = vim.fn.fnamemodify(argv[1], ":p")
       vim.cmd.cd(vim.fn.fnameescape(dir))

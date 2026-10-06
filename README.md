@@ -478,6 +478,7 @@ Ce fichier n'est jamais dans le repo : tes réglages d'entreprise restent sur ta
 | Pas de suggestions IA | `:Copilot auth`, `:Copilot status`, et vérifie que l'IA est activée dans `:Param`. |
 | Commit IA : « claude introuvable » | Installe Claude Code et connecte-toi une fois en lançant `claude` dans un terminal. |
 | Le défilement de Claude au clavier ne marche pas | Utilise la souris en attendant et signale-le : le comportement dépend de la version de Claude Code. |
+| L'aperçu Markdown ne marche pas | Ouvre le fichier `.md` et lance `:MarkdownDiag` : chaque étape est testée et le rapport indique laquelle échoue. |
 | L'aperçu Markdown ne s'ouvre pas en écran partagé | Fonctionne avec Chrome, Edge, Brave et Chromium. Sous Linux, demande X11 (Wayland ignore la position des fenêtres). |
 | Repartir de zéro | Supprime les dossiers de données et de cache de Neovim (`~/.local/share/nvim`, `~/.cache/nvim` ; sous Windows `%LOCALAPPDATA%\nvim-data`). |
 
