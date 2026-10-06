@@ -27,6 +27,7 @@ Tout ce qui est réglable passe par une fenêtre de paramètres et par des **pro
 - [Modifier la config](#modifier-la-config)
   - [Organisation des fichiers](#organisation-des-fichiers)
   - [Ajouter un langage](#ajouter-un-langage)
+    oauwhd
   - [Ajouter un thème](#ajouter-un-thème)
   - [Formateurs](#formateurs)
   - [Normes de commit](#normes-de-commit)
