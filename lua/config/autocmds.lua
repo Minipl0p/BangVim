@@ -51,13 +51,15 @@ au("VimEnter", {
     elseif #argv == 1 and vim.fn.isdirectory(argv[1]) == 1 then
       dir = vim.fn.fnamemodify(argv[1], ":p")
       vim.cmd.cd(vim.fn.fnameescape(dir))
-      -- Supprime le buffer vide du dossier.
-      local buf = vim.api.nvim_get_current_buf()
-      vim.schedule(function()
-        if vim.api.nvim_buf_is_valid(buf) and vim.fn.isdirectory(vim.api.nvim_buf_get_name(buf)) == 1 then
-          pcall(vim.api.nvim_buf_delete, buf, { force = true })
-        end
-      end)
+      -- Remplace le buffer du dossier par un buffer vide invisible, supprimé
+      -- dès qu'un fichier prend sa place (sinon Neovim recrée un « [No Name] »).
+      local dir_buf = vim.api.nvim_get_current_buf()
+      local scratch = vim.api.nvim_create_buf(false, false)
+      vim.bo[scratch].bufhidden = "wipe"
+      vim.api.nvim_win_set_buf(0, scratch)
+      if vim.api.nvim_buf_is_valid(dir_buf) and vim.fn.isdirectory(vim.api.nvim_buf_get_name(dir_buf)) == 1 then
+        pcall(vim.api.nvim_buf_delete, dir_buf, { force = true })
+      end
     end
     if dir then
       vim.schedule(function()

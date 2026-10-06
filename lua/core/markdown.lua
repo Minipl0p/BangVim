@@ -114,7 +114,19 @@ local function open_browser(url, name)
   if chromium then
     wezterm_layout("left")
   end
-  platform.spawn(cmd, opts)
+  -- Même méthode de lancement que :MarkdownDiag (vim.system), qui marche partout.
+  -- En cas d'échec, l'erreur est affichée au lieu d'être ignorée.
+  local ok, err = pcall(vim.system, cmd, vim.tbl_extend("force", { text = true }, opts or {}), function(res)
+    if res.code ~= 0 then
+      vim.schedule(function()
+        vim.notify("Le navigateur ne s'est pas lancé (code " .. res.code .. ") :\n" .. (res.stderr or ""),
+          vim.log.levels.ERROR)
+      end)
+    end
+  end)
+  if not ok then
+    vim.notify("Lancement du navigateur impossible : " .. tostring(err), vim.log.levels.ERROR)
+  end
 end
 
 --- Premier port libre à partir de `start` (5500 est souvent pris par Live Server de VS Code).
