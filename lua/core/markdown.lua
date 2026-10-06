@@ -133,10 +133,9 @@ function M.stop()
 end
 
 function M.toggle()
-  if running then
-    M.stop()
-  else
-    M.start()
+  local ok, err = pcall(running and M.stop or M.start)
+  if not ok then
+    vim.notify("Aperçu Markdown impossible :\n" .. tostring(err), vim.log.levels.ERROR)
   end
 end
 

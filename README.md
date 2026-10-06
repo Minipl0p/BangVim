@@ -53,7 +53,7 @@ Tout ce qui est réglable passe par une fenêtre de paramètres et par des **pro
 - **Interface** : fond en dégradé (dessiné par WezTerm), barre des buffers à onglets inclinés, statusline, ligne de commande flottante au centre, bordure colorée autour du split actif, traînée animée du curseur. Une quinzaine de thèmes, Catppuccin Mocha par défaut.
 - **Navigation** : arbre de fichiers toujours flottant, picker flottant (fichiers, grep, buffers, références), sauts rapides avec `s`.
 - **Code** : LSP, coloration Treesitter, formatage et débogueurs installés automatiquement pour tous les langages listés. Aller à la définition, la déclaration, l'implémentation, le type, les références.
-- **Complétion** : menu classique (LSP, snippets) + suggestions IA gratuites en texte grisé, acceptables en entier, par mot ou par ligne.
+- **Complétion** : menu classique (LSP, snippets) + suggestions IA en texte grisé (GitHub Copilot, plan gratuit disponible), acceptables en entier, par mot ou par ligne.
 - **Copier-coller** : historique de 50 copies, picker pour choisir quoi coller, indentation automatique.
 - **Claude Code** : dans un split vertical, avec défilement au clavier et un raccourci pour tout quitter proprement.
 - **Git** : lazygit flottant, message de commit généré par IA selon une norme choisie par profil, rappels discrets de commit.
@@ -125,7 +125,7 @@ Le prompt PowerShell est un projet séparé (repo `powershell-prompt`).
 
 1. Ouvre WezTerm, puis `nvim`.
 2. Patiente quelques minutes : plugins, serveurs LSP, formateurs, débogueurs et parseurs s'installent. `:Mason` montre la progression.
-3. Lance `:NeoCodeium auth` pour activer les suggestions IA gratuites (compte Windsurf gratuit).
+3. Active le plan gratuit de Copilot sur GitHub (*Settings → Copilot → Copilot Free*), puis lance `:Copilot auth` et saisis le code affiché sur la page indiquée.
 4. Vérifie l'état avec `:checkhealth`.
 
 ![Premier lancement](docs/screenshots/premier-lancement.png) <!-- capture : Mason qui installe -->
@@ -303,10 +303,11 @@ La police se règle dans WezTerm (`wezterm/wezterm.lua`), pas dans Neovim.
 
 - `<leader>a` ouvre Claude Code dans un split à droite (38 % de la largeur), ou le cache sans perdre la session.
 - `<C-;>` passe du code à Claude et inversement.
-- Dans Claude, `<C-j>` et `<C-k>` font défiler les réponses comme la molette.
+- Dans Claude, `<C-j>` et `<C-k>` passent en **mode lecture** et font défiler les réponses comme la molette. En mode lecture, toutes les motions Vim marchent (`j`, `k`, `w`, `v`, `y`…) : `j`/`k` font défiler quand le curseur touche le bas ou le haut, et `i` revient à la saisie. La sélection se limite à ce qui est affiché à l'écran ; pour récupérer une très longue réponse, utilise `/export` dans Claude Code.
+- `<C-t>` ouvre le terminal flottant même depuis Claude (le raccourci `Ctrl+T` de Claude Code, la liste des tâches, n'est donc plus disponible).
 - `<leader>Q` quitte tout : demande de sauvegarder si besoin, rappelle les modifs non commitées, envoie `/exit` à Claude, ferme Neovim.
 
-Aucun raccourci de la config n'est actif dans la saisie de Claude : `Esc`, `Shift+Tab`, `<C-t>` restent à Claude Code. Seule exception, `Ctrl+K` (effacer la fin de ligne) est pris par le défilement. Pour aller à la ligne dans un message : `\` puis `Entrée`.
+Dans la saisie de Claude, seuls `<C-;>`, `<C-t>`, `<C-j>` et `<C-k>` sont pris par la config : `Esc`, `Shift+Tab` et le reste restent à Claude Code. Pour aller à la ligne dans un message : `\` puis `Entrée`.
 
 Quand Claude propose une modification, elle s'affiche en diff dans Neovim : `:w` pour accepter, ferme le diff pour refuser.
 
@@ -474,7 +475,7 @@ Ce fichier n'est jamais dans le repo : tes réglages d'entreprise restent sur ta
 | `<C-;>`, `<C-/>` ou `<C-S-q>` ne répondent pas | Utilise WezTerm avec la config fournie : ces touches demandent le protocole clavier kitty. |
 | Pas de coloration | `:checkhealth nvim-treesitter`. Il faut `tree-sitter-cli` (installé par Mason) et un compilateur C (gcc, ou Visual Studio C++ sous Windows). |
 | Pas de complétion ni de `gd` | `:checkhealth vim.lsp` et `:Mason` pour voir si le serveur est installé. Unreal : `compile_commands.json` manquant. Godot : l'éditeur Godot doit être ouvert. |
-| Pas de suggestions IA | `:NeoCodeium auth`, et vérifie que l'IA est activée dans `:Param`. |
+| Pas de suggestions IA | `:Copilot auth`, `:Copilot status`, et vérifie que l'IA est activée dans `:Param`. |
 | Commit IA : « claude introuvable » | Installe Claude Code et connecte-toi une fois en lançant `claude` dans un terminal. |
 | Le défilement de Claude au clavier ne marche pas | Utilise la souris en attendant et signale-le : le comportement dépend de la version de Claude Code. |
 | L'aperçu Markdown ne s'ouvre pas en écran partagé | Fonctionne avec Chrome, Edge, Brave et Chromium. Sous Linux, demande X11 (Wayland ignore la position des fenêtres). |
@@ -490,7 +491,7 @@ Ce fichier n'est jamais dans le repo : tes réglages d'entreprise restent sur ta
 | Interface | [bufferline](https://github.com/akinsho/bufferline.nvim), [lualine](https://github.com/nvim-lualine/lualine.nvim), [noice](https://github.com/folke/noice.nvim), [which-key](https://github.com/folke/which-key.nvim), [colorful-winsep](https://github.com/nvim-zh/colorful-winsep.nvim), [smear-cursor](https://github.com/sphamba/smear-cursor.nvim) |
 | Outils | [snacks.nvim](https://github.com/folke/snacks.nvim) (picker, terminal, lazygit, notifications), [neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim), [flash](https://github.com/folke/flash.nvim), [yanky](https://github.com/gbprod/yanky.nvim) |
 | Code | [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter), [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig), [mason](https://github.com/mason-org/mason.nvim), [mason-tool-installer](https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim), [roslyn.nvim](https://github.com/seblyng/roslyn.nvim), [nvim-jdtls](https://github.com/mfussenegger/nvim-jdtls), [conform](https://github.com/stevearc/conform.nvim) |
-| Complétion | [blink.cmp](https://github.com/saghen/blink.cmp), [friendly-snippets](https://github.com/rafamadriz/friendly-snippets), [neocodeium](https://github.com/monkoose/neocodeium) |
+| Complétion | [blink.cmp](https://github.com/saghen/blink.cmp), [friendly-snippets](https://github.com/rafamadriz/friendly-snippets), [copilot.lua](https://github.com/zbirenbaum/copilot.lua) |
 | Debug | [nvim-dap](https://github.com/mfussenegger/nvim-dap), [nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui), [mason-nvim-dap](https://github.com/jay-babu/mason-nvim-dap.nvim), [nvim-dap-virtual-text](https://github.com/theHamsta/nvim-dap-virtual-text) |
 | IA | [claudecode.nvim](https://github.com/coder/claudecode.nvim) |
 | Markdown | [render-markdown](https://github.com/MeanderingProgrammer/render-markdown.nvim), [live-preview](https://github.com/brianhuster/live-preview.nvim) |

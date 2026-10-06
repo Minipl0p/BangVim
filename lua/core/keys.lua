@@ -273,17 +273,21 @@ end
 
 --- Touches propres à la fenêtre de Claude (mode terminal et normal).
 function M.attach_claude(buf)
-  for _, a in ipairs(M.actions) do
-    if a.scope == "claude" then
-      for _, mode in ipairs({ "t", "n" }) do
-        vim.keymap.set(mode, M.get(a.id), a.fn, { buffer = buf, desc = a.desc, silent = true })
-      end
-    end
+  local function o(desc)
+    return { buffer = buf, desc = desc, silent = true }
   end
-  -- Sortir de Claude avec la touche de rotation des fenêtres.
-  local cycle = M.get("win_cycle")
-  vim.keymap.set("t", cycle, "<C-\\><C-n><Cmd>lua require('core.claude').cycle()<CR>",
-    { buffer = buf, desc = "Revenir au code", silent = true })
+  local down, up = M.get("claude_scroll_down"), M.get("claude_scroll_up")
+  -- Pendant la saisie : <C-j>/<C-k> passent en mode lecture (normal) et défilent.
+  vim.keymap.set("t", down, "<C-\\><C-n><Cmd>lua require('core.claude').scroll(1)<CR>", o("Lire / défiler vers le bas"))
+  vim.keymap.set("t", up, "<C-\\><C-n><Cmd>lua require('core.claude').scroll(-1)<CR>", o("Lire / défiler vers le haut"))
+  -- En mode lecture : défilement, et j/k font défiler quand on touche le bord.
+  vim.keymap.set("n", down, function() require("core.claude").scroll(1) end, o("Défiler vers le bas"))
+  vim.keymap.set("n", up, function() require("core.claude").scroll(-1) end, o("Défiler vers le haut"))
+  vim.keymap.set("n", "j", function() require("core.claude").edge("j") end, o("Ligne suivante (défile au bord)"))
+  vim.keymap.set("n", "k", function() require("core.claude").edge("k") end, o("Ligne précédente (défile au bord)"))
+  -- Sortir de Claude, ou ouvrir le terminal flottant par-dessus.
+  vim.keymap.set("t", M.get("win_cycle"), "<C-\\><C-n><Cmd>lua require('core.claude').cycle()<CR>", o("Revenir au code"))
+  vim.keymap.set("t", M.get("term_toggle"), "<C-\\><C-n><Cmd>lua require('core.terminal').toggle()<CR>", o("Terminal flottant"))
 end
 
 function M.setup()

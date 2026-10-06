@@ -12,8 +12,13 @@ end
 function M.write()
   local key = require("core.keys").get("ai_commit") or "<c-a>"
   local script = vim.fs.joinpath(vim.fn.stdpath("config"), "scripts", "ai_commit.lua")
-  local nvim = vim.v.progpath
-  local command = ('"%s" -l "%s"'):format(nvim, script)
+  -- Sous Windows, lazygit passe par `cmd /c`, qui casse les commandes commençant
+  -- par un guillemet : on n'en met que si le chemin contient un espace.
+  local function q(path)
+    return path:find(" ") and ('"' .. path .. '"') or path
+  end
+  local nvim = vim.fn.executable("nvim") == 1 and "nvim" or vim.v.progpath
+  local command = q(nvim) .. " -l " .. q(script)
   local lines = {
     "customCommands:",
     "  - key: " .. yaml_str(key),

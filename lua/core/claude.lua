@@ -61,7 +61,7 @@ end
 
 --- Défilement dans Claude Code : on lui envoie des événements de molette,
 --- exactement ce que ferait la souris (Claude dessine lui-même son historique).
-function M.scroll(dir)
+function M.scroll(dir, steps)
   local buf = M.buf()
   if not buf then
     return
@@ -75,15 +75,35 @@ function M.scroll(dir)
   local row = math.max(1, math.floor(vim.api.nvim_win_get_height(win) / 2))
   local button = dir > 0 and 65 or 64 -- 64 = molette haut, 65 = molette bas (SGR)
   local seq = ("\27[<%d;%d;%dM"):format(button, col, row)
-  for _ = 1, M.scroll_steps do
+  for _ = 1, steps or M.scroll_steps do
     vim.api.nvim_chan_send(chan, seq)
   end
 end
 
+--- Mode lecture : j/k bougent normalement, et font défiler Claude
+--- quand le curseur atteint le haut ou le bas de la fenêtre.
+function M.edge(key)
+  local line, last = vim.fn.line("."), vim.fn.line("$")
+  if key == "k" and line <= 1 then
+    M.scroll(-1, 1)
+  elseif key == "j" and line >= last then
+    M.scroll(1, 1)
+  else
+    vim.cmd("normal! " .. vim.v.count1 .. key)
+  end
+end
+
+local function is_claude(buf)
+  if not vim.api.nvim_buf_is_valid(buf) or vim.bo[buf].buftype ~= "terminal" then
+    return false
+  end
+  return M.buf() == buf or vim.api.nvim_buf_get_name(buf):lower():find("claude") ~= nil
+end
+
 --- Pose les touches propres à la fenêtre de Claude.
-function M.attach_keys()
-  local buf = M.buf()
-  if buf then
+function M.attach_keys(buf)
+  buf = buf or M.buf()
+  if buf and vim.api.nvim_buf_is_valid(buf) then
     vim.bo[buf].buflisted = false
     require("core.keys").attach_claude(buf)
   end
@@ -136,13 +156,14 @@ function M.setup()
     end,
   })
   -- Le terminal de Claude est créé à la demande : on pose ses touches dès qu'il apparaît.
-  vim.api.nvim_create_autocmd({ "TermOpen", "BufEnter" }, {
+  vim.api.nvim_create_autocmd({ "TermOpen", "BufEnter", "TermEnter" }, {
     group = group,
     callback = function(ev)
+      local buf = ev.buf
       vim.schedule(function()
-        if M.buf() == ev.buf and not vim.b[ev.buf].claude_keys then
-          vim.b[ev.buf].claude_keys = true
-          M.attach_keys()
+        if is_claude(buf) and not vim.b[buf].claude_keys then
+          vim.b[buf].claude_keys = true
+          M.attach_keys(buf)
         end
       end)
     end,
